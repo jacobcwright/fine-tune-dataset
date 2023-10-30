@@ -1,4 +1,6 @@
+import { ThemeProvider } from '@/components/ThemeProvider'
 import './globals.css'
+import { ThemeToggle } from '@/components/ThemeToggle'
 
 export const metadata = {
   title: 'Fine-tuning dataset',
@@ -13,9 +15,16 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className='bg-background text-foreground'>
-        <main className='min-h-screen flex flex-col items-center'>
-          {children}
-        </main>
+        <ThemeProvider
+          attribute='class'
+          defaultTheme='system'
+          enableSystem
+          disableTransitionOnChange
+        >
+          <main className='min-h-screen flex flex-col items-center'>
+            {children}
+          </main>
+        </ThemeProvider>
       </body>
     </html>
   )
